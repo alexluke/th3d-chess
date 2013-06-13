@@ -18,7 +18,16 @@
 		4A931AE01769381A001603EC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A931ADF1769381A001603EC /* Default-568h@2x.png */; };
 		4A931AE31769381A001603EC /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A931AE11769381A001603EC /* MainStoryboard_iPhone.storyboard */; };
 		4A931AE61769381A001603EC /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A931AE41769381A001603EC /* MainStoryboard_iPad.storyboard */; };
-		4A931AE91769381A001603EC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A931AE81769381A001603EC /* ViewController.m */; };
+		4A931AE91769381A001603EC /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4A931AE81769381A001603EC /* ViewController.mm */; };
+		4A931AF317693B78001603EC /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A931AF117693B5F001603EC /* Accelerate.framework */; };
+		4A931B0017693BD5001603EC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A931AFE17693BAD001603EC /* QuartzCore.framework */; };
+		4A931B0117693BDC001603EC /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A931AFC17693BA7001603EC /* CoreVideo.framework */; };
+		4A931B0217693BDC001603EC /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A931AFA17693BA0001603EC /* CoreMedia.framework */; };
+		4A931B0317693BDC001603EC /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A931AF817693B98001603EC /* CoreImage.framework */; };
+		4A931B0417693BDC001603EC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A931AF617693B89001603EC /* AVFoundation.framework */; };
+		4A931B0517693BDC001603EC /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A931AF417693B80001603EC /* AssetsLibrary.framework */; };
+		4A931B0917693E04001603EC /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A931B0817693E04001603EC /* opencv2.framework */; };
+		4A931B0B17693E71001603EC /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A931B0A17693E71001603EC /* libc++.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +47,17 @@
 		4A931AE21769381A001603EC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		4A931AE51769381A001603EC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		4A931AE71769381A001603EC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4A931AE81769381A001603EC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4A931AE81769381A001603EC /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
+		4A931AF117693B5F001603EC /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		4A931AF417693B80001603EC /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		4A931AF617693B89001603EC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4A931AF817693B98001603EC /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		4A931AFA17693BA0001603EC /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		4A931AFC17693BA7001603EC /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		4A931AFE17693BAD001603EC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4A931B0617693D92001603EC /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		4A931B0817693E04001603EC /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
+		4A931B0A17693E71001603EC /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,9 +65,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A931B0B17693E71001603EC /* libc++.dylib in Frameworks */,
+				4A931AF317693B78001603EC /* Accelerate.framework in Frameworks */,
+				4A931B0517693BDC001603EC /* AssetsLibrary.framework in Frameworks */,
+				4A931B0417693BDC001603EC /* AVFoundation.framework in Frameworks */,
+				4A931ACE1769381A001603EC /* CoreGraphics.framework in Frameworks */,
+				4A931B0317693BDC001603EC /* CoreImage.framework in Frameworks */,
+				4A931B0217693BDC001603EC /* CoreMedia.framework in Frameworks */,
+				4A931B0117693BDC001603EC /* CoreVideo.framework in Frameworks */,
+				4A931B0017693BD5001603EC /* QuartzCore.framework in Frameworks */,
 				4A931ACA1769381A001603EC /* UIKit.framework in Frameworks */,
 				4A931ACC1769381A001603EC /* Foundation.framework in Frameworks */,
-				4A931ACE1769381A001603EC /* CoreGraphics.framework in Frameworks */,
+				4A931B0917693E04001603EC /* opencv2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +86,8 @@
 		4A931ABD17693819001603EC = {
 			isa = PBXGroup;
 			children = (
+				4A931B0A17693E71001603EC /* libc++.dylib */,
+				4A931B0617693D92001603EC /* libstdc++.dylib */,
 				4A931ACF1769381A001603EC /* th3d-chess */,
 				4A931AC81769381A001603EC /* Frameworks */,
 				4A931AC71769381A001603EC /* Products */,
@@ -75,6 +105,14 @@
 		4A931AC81769381A001603EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4A931B0817693E04001603EC /* opencv2.framework */,
+				4A931AFE17693BAD001603EC /* QuartzCore.framework */,
+				4A931AFC17693BA7001603EC /* CoreVideo.framework */,
+				4A931AFA17693BA0001603EC /* CoreMedia.framework */,
+				4A931AF817693B98001603EC /* CoreImage.framework */,
+				4A931AF617693B89001603EC /* AVFoundation.framework */,
+				4A931AF417693B80001603EC /* AssetsLibrary.framework */,
+				4A931AF117693B5F001603EC /* Accelerate.framework */,
 				4A931AC91769381A001603EC /* UIKit.framework */,
 				4A931ACB1769381A001603EC /* Foundation.framework */,
 				4A931ACD1769381A001603EC /* CoreGraphics.framework */,
@@ -90,7 +128,7 @@
 				4A931AE11769381A001603EC /* MainStoryboard_iPhone.storyboard */,
 				4A931AE41769381A001603EC /* MainStoryboard_iPad.storyboard */,
 				4A931AE71769381A001603EC /* ViewController.h */,
-				4A931AE81769381A001603EC /* ViewController.m */,
+				4A931AE81769381A001603EC /* ViewController.mm */,
 				4A931AD01769381A001603EC /* Supporting Files */,
 			);
 			path = "th3d-chess";
@@ -179,7 +217,7 @@
 			files = (
 				4A931AD61769381A001603EC /* main.m in Sources */,
 				4A931ADA1769381A001603EC /* AppDelegate.m in Sources */,
-				4A931AE91769381A001603EC /* ViewController.m in Sources */,
+				4A931AE91769381A001603EC /* ViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,9 +312,14 @@
 		4A931AED1769381A001603EC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "th3d-chess/th3d-chess-Prefix.pch";
 				INFOPLIST_FILE = "th3d-chess/th3d-chess-Info.plist";
+				OTHER_LDFLAGS = "-lstdc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -285,9 +328,14 @@
 		4A931AEE1769381A001603EC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "th3d-chess/th3d-chess-Prefix.pch";
 				INFOPLIST_FILE = "th3d-chess/th3d-chess-Info.plist";
+				OTHER_LDFLAGS = "-lstdc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
