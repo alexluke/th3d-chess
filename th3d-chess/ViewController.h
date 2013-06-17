@@ -21,5 +21,6 @@ using namespace cv;
 @property (nonatomic, retain) CvVideoCamera *videoCamera;
 
 - (IBAction)actionStart:(id)sender;
+- (void)drawLineOn:(Mat&)image withLine:(Vec2f)line color:(Scalar)color;
 
 @end
