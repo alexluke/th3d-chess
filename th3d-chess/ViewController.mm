@@ -31,53 +31,40 @@
 - (void)processImage:(Mat&)image {
 	Mat outer_box;
 	cvtColor(image, outer_box, CV_BGRA2GRAY);
-    
-    GaussianBlur(outer_box, outer_box, cv::Size(11, 11), 0);
-    adaptiveThreshold(outer_box, outer_box, 255, ADAPTIVE_THRESH_MEAN_C, THRESH_BINARY, 5, 2.0);
-    bitwise_not(outer_box, outer_box);
-    
-    Mat kernel = (Mat_<uchar>(3, 3) << 0,1,0,1,1,1,0,1,0);
-    dilate(outer_box, outer_box, kernel);
-    
-    int max = -1;
-    cv::Point maxPt;
-    
-    for (int y = 0; y < outer_box.size().height; y++) {
-        uchar *row = outer_box.ptr(y);
-        for (int x = 0; x < outer_box.size().width; x++) {
-            if (row[x] >= 128) {
-                int area = floodFill(outer_box, cv::Point(x, y), CV_RGB(0, 0, 64));
-                
-                if (area > max) {
-                    maxPt = cv::Point(x, y);
-                    max = area;
-                }
-            }
-        }
-    }
-    
-    floodFill(outer_box, maxPt, CV_RGB(255, 255, 255));
-    
-    for (int y = 0; y < outer_box.size().height; y++) {
-        uchar *row = outer_box.ptr(y);
-        for (int x = 0; x < outer_box.size().width; x++) {
-            if (row[x] == 64 && x != maxPt.x && y != maxPt.y) {
-                floodFill(outer_box, cv::Point(x, y), CV_RGB(0, 0, 0));
-            }
-        }
-    }
-    
-    erode(outer_box, outer_box, kernel);
-    
-    vector<Vec2f> lines;
-    HoughLines(outer_box, lines, 1, CV_PI/180, 200);
-    NSLog(@"%ld", lines.size());
-    
-    for (int i = 0; i < lines.size(); i++) {
-        [self drawLineOn:outer_box withLine:lines[i] color:CV_RGB(0, 0, 128)];
-    }
+    //equalizeHist(outer_box, outer_box);
 
-    cvtColor(outer_box, image, CV_GRAY2BGRA);
+    Mat white, black, thresh;
+    
+    erode(outer_box, white, NULL);
+    dilate(outer_box, black, NULL);
+    
+    threshold(white, thresh, 20.0f + 70.0f, 255, CV_THRESH_BINARY);
+    
+    vector<vector<cv::Point>> contours;
+    findContours(thresh, contours, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
+    drawContours(image, contours, -1, CV_RGB(255, 0, 0));
+    
+    vector<std::pair<float, int>> quads;
+    [self saveQuadrangleHypothesesTo:quads fromContours:contours];
+    
+    threshold(black, thresh, 20.0f + 70.0f, 255, CV_THRESH_BINARY_INV);
+    findContours(thresh, contours, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
+    drawContours(image, contours, -1, CV_RGB(255, 0, 0));
+    //cvtColor(thresh, image, CV_GRAY2BGRA);
+}
+
+- (void)saveQuadrangleHypothesesTo:(vector<std::pair<float, int>>&)quads fromContours:(vector<vector<cv::Point>>)contours {
+    
+    for (int i = 0; i < contours.size(); i++) {
+        RotatedRect box = minAreaRect(contours[i]);
+        float box_size = MAX(box.size.width, box.size.height);
+        if (box_size < 10.0f)
+            continue;
+        float aspect_ratio = box.size.width / MAX(box.size.height, 1);
+        if (aspect_ratio < 0.3f || aspect_ratio > 3.0f)
+            continue;
+        quads.push_back(std::pair<float, int>(box_size, 1));
+    }
 }
 
 - (void)drawLineOn:(Mat&)image withLine:(Vec2f)line color:(Scalar)color {
