@@ -29,53 +29,94 @@
 
 #ifdef __cplusplus
 - (void)processImage:(Mat&)image {
-	Mat outer_box;
-	cvtColor(image, outer_box, CV_BGRA2GRAY);
-    //equalizeHist(outer_box, outer_box);
-
-    Mat white, black, thresh;
+    Mat thresh;
+	cvtColor(image, thresh, CV_BGRA2GRAY);
     
-    erode(outer_box, white, NULL);
-    dilate(outer_box, black, NULL);
+    //equalizeHist(thresh, thresh);
     
-    threshold(white, thresh, 20.0f + 70.0f, 255, CV_THRESH_BINARY);
+    int k = stepperValue1;
+    int dilations = stepperValue2;
+    int block_size = cvRound(MIN(thresh.cols, thresh.rows) * (k%2 == 0 ? 0.2 : 0.1))|1;
+    adaptiveThreshold(thresh, thresh, 255, CV_ADAPTIVE_THRESH_MEAN_C, CV_THRESH_BINARY, block_size, (k/2)*5);
+    if (dilations > 0)
+        dilate(thresh, thresh, 0, cv::Point(-1, -1), dilations - 1);
     
+    rectangle(thresh, cv::Point(0, 0), cv::Point(thresh.cols - 1, thresh.rows -1), CV_RGB(255, 255, 255), 3, 8);
+    
+    if (stepperValue4 == 1)
+        cvtColor(thresh, image, CV_GRAY2BGRA);
+    
+    int board_index = -1;
+    vector<cv::Point> board;
     vector<vector<cv::Point>> contours;
-    findContours(thresh, contours, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
-    drawContours(image, contours, -1, CV_RGB(255, 0, 0));
+    vector<Vec4i> hierarchy;
+    findContours(thresh, contours, hierarchy,  CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
+    vector<int> counters(contours.size());
+    for (int i = 0; i < contours.size(); i++) {
+        cv::Rect rect = boundingRect(contours[i]);
+        if (hierarchy[i][3] > -1 && rect.width * rect.height >= 25) {
+            if (stepperValue3 == 1)
+                drawContours(image, contours, i, CV_RGB(0, 0, 255));
+            vector<cv::Point> dst;
+            for (int l = 1; l <= 7; l++) {
+                approxPolyDP(contours[i], dst, (double)l, TRUE);
+                if (dst.size() == 4)
+                    break;
+            }
+            
+            //if (dst.size() == 4)
+            //    [self drawPoly:dst withColor:CV_RGB(0, 0, 255) toImage:image];
+            
+            if (dst.size() == 4 && isContourConvex(dst)) {
+                
+                double d1, d2, p = arcLength(dst, TRUE);
+                double area = fabs(contourArea(dst));
+                double dx, dy;
+                
+                dx = dst[0].x - dst[2].x;
+                dy = dst[0].y - dst[2].y;
+                d1 = sqrt(dx*dx + dy*dy);
+                
+                dx = dst[1].x - dst[3].x;
+                dy = dst[1].y - dst[3].y;
+                d2 = sqrt(dx*dx + dy*dy);
+                
+                double d3, d4;
+                dx = dst[0].x - dst[1].x;
+                dy = dst[0].y - dst[1].y;
+                d3 = sqrt(dx*dx + dy*dy);
+                dx = dst[1].x - dst[2].x;
+                dy = dst[1].y - dst[2].y;
+                d4 = sqrt(dx*dx + dy*dy);
+                
+                if (d3*4 > d4 &&
+                    d4*4 > d3 &&
+                    d3*d4 < area*1.5 &&
+                    area > 25 &&
+                    d1 >= 0.15 * p &&
+                    d2 >= 0.15 *p) {
+                    counters[hierarchy[i][1]]++;
+                    if (board_index == -1 || counters[board_index] < counters[hierarchy[i][1]]) {
+                        board_index = i;
+                        board = dst;
+                    }
+                }
+            }
+        }
+    }
     
-    vector<std::pair<float, int>> quads;
-    [self saveQuadrangleHypothesesTo:quads fromContours:contours];
+    if (board_index != -1) {
+        [self drawPoly:board withColor:CV_RGB(255, 0, 0) toImage:image];
+    }
     
-    threshold(black, thresh, 20.0f + 70.0f, 255, CV_THRESH_BINARY_INV);
-    findContours(thresh, contours, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
-    drawContours(image, contours, -1, CV_RGB(255, 0, 0));
+    
     //cvtColor(thresh, image, CV_GRAY2BGRA);
 }
 
-- (void)saveQuadrangleHypothesesTo:(vector<std::pair<float, int>>&)quads fromContours:(vector<vector<cv::Point>>)contours {
-    
-    for (int i = 0; i < contours.size(); i++) {
-        RotatedRect box = minAreaRect(contours[i]);
-        float box_size = MAX(box.size.width, box.size.height);
-        if (box_size < 10.0f)
-            continue;
-        float aspect_ratio = box.size.width / MAX(box.size.height, 1);
-        if (aspect_ratio < 0.3f || aspect_ratio > 3.0f)
-            continue;
-        quads.push_back(std::pair<float, int>(box_size, 1));
-    }
-}
-
-- (void)drawLineOn:(Mat&)image withLine:(Vec2f)line color:(Scalar)color {
-    if (line[1] != 0) {
-        float m = -1/tan(line[1]);
-        float c = line[0]/sin(line[1]);
-        
-        cv::line(image, cv::Point(0, c), cv::Point(image.size().width, m * image.size().width + c), color);
-    } else {
-        cv::line(image, cv::Point(line[0], 0), cv::Point(line[0], image.size().height), color);
-    }
+- (void)drawPoly:(vector<cv::Point>)poly withColor:(Scalar)color toImage:(Mat)image {
+    for (int i = 0; i < poly.size() - 1; i++)
+        line(image, poly[i], poly[i+1], color);
+    line(image, poly[poly.size() - 1], poly[0], color);
 }
 #endif
 
@@ -86,6 +127,27 @@
     } else {
         [self.videoCamera start];
         [sender setTitle:@"Stop" forState:UIControlStateNormal];
+    }
+}
+
+- (IBAction)stepperValueChanged:(UIStepper *)sender {
+    switch (sender.tag) {
+        case 1:
+            stepperValue1 = (int)sender.value;
+            [self.stepperLabel1 setText:[NSString stringWithFormat:@"%d", stepperValue1]];
+            break;
+        case 2:
+            stepperValue2 = (int)sender.value;
+            [self.stepperLabel2 setText:[NSString stringWithFormat:@"%d", stepperValue2]];
+            break;
+        case 3:
+            stepperValue3 = (int)sender.value;
+            [self.stepperLabel3 setText:[NSString stringWithFormat:@"%d", stepperValue3]];
+            break;
+        case 4:
+            stepperValue4 = (int)sender.value;
+            [self.stepperLabel4 setText:[NSString stringWithFormat:@"%d", stepperValue4]];
+            break;
     }
 }
 

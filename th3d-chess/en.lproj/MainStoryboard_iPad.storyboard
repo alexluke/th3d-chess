@@ -14,7 +14,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C4Q-G4-nj8">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="918" id="KPs-kd-38h"/>
+                                    <constraint firstAttribute="height" constant="918" id="v05-HM-s6m"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z4V-Mf-hP1">
@@ -33,19 +33,92 @@
                                     <action selector="actionStart:" destination="2" eventType="touchUpInside" id="67C-cx-BD8"/>
                                 </connections>
                             </button>
+                            <stepper opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Sfe-6v-NDj">
+                                <connections>
+                                    <action selector="stepperValueChanged:" destination="2" eventType="valueChanged" id="xuj-Gd-qOd"/>
+                                </connections>
+                            </stepper>
+                            <stepper opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="qvv-hf-pgK">
+                                <connections>
+                                    <action selector="stepperValueChanged:" destination="2" eventType="valueChanged" id="ShX-QO-3mu"/>
+                                </connections>
+                            </stepper>
+                            <stepper opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="LQr-LY-5vu">
+                                <connections>
+                                    <action selector="stepperValueChanged:" destination="2" eventType="valueChanged" id="UXk-9J-jTK"/>
+                                </connections>
+                            </stepper>
+                            <stepper opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="wXg-jr-7GW">
+                                <connections>
+                                    <action selector="stepperValueChanged:" destination="2" eventType="valueChanged" id="V3C-1j-DT9"/>
+                                </connections>
+                            </stepper>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awY-Hj-GZO">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="yxd-FF-BQR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPT-vc-8bu">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="WP1-Cb-2s1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJM-AI-SSP">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="BFi-M1-L03"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fng-dO-OVh">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="Ff9-ef-ngk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="YJM-AI-SSP" firstAttribute="baseline" secondItem="jPT-vc-8bu" secondAttribute="baseline" type="default" id="0Pz-eH-Fvb"/>
+                            <constraint firstItem="qvv-hf-pgK" firstAttribute="centerY" secondItem="Z4V-Mf-hP1" secondAttribute="centerY" type="default" id="2qf-og-6Fv"/>
                             <constraint firstAttribute="bottom" secondItem="Z4V-Mf-hP1" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="45c-iF-K8A"/>
                             <constraint firstItem="C4Q-G4-nj8" firstAttribute="top" secondItem="5" secondAttribute="top" type="default" id="5UM-5c-l37"/>
+                            <constraint firstItem="Sfe-6v-NDj" firstAttribute="top" secondItem="awY-Hj-GZO" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="6Dp-k4-D8B"/>
+                            <constraint firstItem="jPT-vc-8bu" firstAttribute="baseline" secondItem="awY-Hj-GZO" secondAttribute="baseline" type="default" id="HbQ-1f-UZp"/>
+                            <constraint firstItem="qvv-hf-pgK" firstAttribute="leading" secondItem="5" secondAttribute="leading" constant="180" id="LDM-Xj-BYF"/>
                             <constraint firstItem="Z4V-Mf-hP1" firstAttribute="centerX" secondItem="C4Q-G4-nj8" secondAttribute="centerX" type="default" id="Vg5-DP-H8y"/>
                             <constraint firstItem="C4Q-G4-nj8" firstAttribute="leading" secondItem="5" secondAttribute="leading" type="default" id="Y8S-cv-I6v"/>
+                            <constraint firstItem="fng-dO-OVh" firstAttribute="centerX" secondItem="wXg-jr-7GW" secondAttribute="centerX" type="default" id="YBO-bt-R4Y"/>
+                            <constraint firstItem="awY-Hj-GZO" firstAttribute="leading" secondItem="5" secondAttribute="leading" constant="51" id="d5C-pP-Jek"/>
                             <constraint firstItem="C4Q-G4-nj8" firstAttribute="trailing" secondItem="5" secondAttribute="trailing" type="default" id="eTK-zy-4nX"/>
+                            <constraint firstItem="qvv-hf-pgK" firstAttribute="top" secondItem="jPT-vc-8bu" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="f2d-7a-fqP"/>
+                            <constraint firstAttribute="trailing" secondItem="wXg-jr-7GW" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="hLU-rl-RIn"/>
+                            <constraint firstItem="awY-Hj-GZO" firstAttribute="centerX" secondItem="Sfe-6v-NDj" secondAttribute="centerX" type="default" id="i1Q-Qo-zYO"/>
+                            <constraint firstItem="LQr-LY-5vu" firstAttribute="top" secondItem="YJM-AI-SSP" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="j2s-su-wwC"/>
+                            <constraint firstItem="YJM-AI-SSP" firstAttribute="centerX" secondItem="LQr-LY-5vu" secondAttribute="centerX" type="default" id="lAZ-i7-SNb"/>
+                            <constraint firstItem="Sfe-6v-NDj" firstAttribute="leading" secondItem="5" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="uXs-E5-53c"/>
+                            <constraint firstItem="qvv-hf-pgK" firstAttribute="centerX" secondItem="jPT-vc-8bu" secondAttribute="centerX" type="default" id="uuY-Og-bRo"/>
+                            <constraint firstItem="wXg-jr-7GW" firstAttribute="top" secondItem="fng-dO-OVh" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="vRF-nB-3fY"/>
+                            <constraint firstAttribute="trailing" secondItem="LQr-LY-5vu" secondAttribute="trailing" constant="183" id="yfz-nJ-to9"/>
+                            <constraint firstItem="fng-dO-OVh" firstAttribute="baseline" secondItem="YJM-AI-SSP" secondAttribute="baseline" type="default" id="zU7-hj-o6l"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="button" destination="Z4V-Mf-hP1" id="siR-Nw-7HZ"/>
                         <outlet property="imageView" destination="C4Q-G4-nj8" id="xGe-Wz-K6M"/>
+                        <outlet property="stepperLabel1" destination="awY-Hj-GZO" id="itO-f9-cEn"/>
+                        <outlet property="stepperLabel2" destination="jPT-vc-8bu" id="jSF-En-rA6"/>
+                        <outlet property="stepperLabel3" destination="YJM-AI-SSP" id="qj7-A4-pcl"/>
+                        <outlet property="stepperLabel4" destination="fng-dO-OVh" id="f9d-Mg-aLg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3" sceneMemberID="firstResponder"/>
@@ -53,21 +126,6 @@
             <point key="canvasLocation" x="-72" y="-159"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="actionStart:"/>
-                <relationship kind="outlet" name="_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="_imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

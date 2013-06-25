@@ -11,16 +11,22 @@
 using namespace cv;
 
 @interface ViewController : UIViewController<CvVideoCameraDelegate> {
-	//IBOutlet UIImageView *_imageView;
-	//IBOutlet UIButton *_button;
-    //CvVideoCamera *_videoCamera;
+    int stepperValue1;
+    int stepperValue2;
+    int stepperValue3;
+    int stepperValue4;
 }
 
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
 @property (nonatomic, strong) IBOutlet UIButton *button;
 @property (nonatomic, retain) CvVideoCamera *videoCamera;
 
+@property (nonatomic, strong) IBOutlet UILabel *stepperLabel1;
+@property (nonatomic, strong) IBOutlet UILabel *stepperLabel2;
+@property (nonatomic, strong) IBOutlet UILabel *stepperLabel3;
+@property (nonatomic, strong) IBOutlet UILabel *stepperLabel4;
+
 - (IBAction)actionStart:(id)sender;
-- (void)drawLineOn:(Mat&)image withLine:(Vec2f)line color:(Scalar)color;
+- (IBAction)stepperValueChanged:(UIStepper*)sender;
 
 @end
