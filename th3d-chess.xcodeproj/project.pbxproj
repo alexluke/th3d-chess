@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A8331571773B34C00C518A7 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A8331561773B34C00C518A7 /* opencv2.framework */; };
 		4A931ACA1769381A001603EC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A931AC91769381A001603EC /* UIKit.framework */; };
 		4A931ACC1769381A001603EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A931ACB1769381A001603EC /* Foundation.framework */; };
 		4A931ACE1769381A001603EC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A931ACD1769381A001603EC /* CoreGraphics.framework */; };
@@ -26,11 +27,11 @@
 		4A931B0317693BDC001603EC /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A931AF817693B98001603EC /* CoreImage.framework */; };
 		4A931B0417693BDC001603EC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A931AF617693B89001603EC /* AVFoundation.framework */; };
 		4A931B0517693BDC001603EC /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A931AF417693B80001603EC /* AssetsLibrary.framework */; };
-		4A931B0917693E04001603EC /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A931B0817693E04001603EC /* opencv2.framework */; };
 		4A931B0B17693E71001603EC /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A931B0A17693E71001603EC /* libc++.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A8331561773B34C00C518A7 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		4A931AC61769381A001603EC /* th3d-chess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "th3d-chess.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A931AC91769381A001603EC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4A931ACB1769381A001603EC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -56,7 +57,6 @@
 		4A931AFC17693BA7001603EC /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		4A931AFE17693BAD001603EC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4A931B0617693D92001603EC /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
-		4A931B0817693E04001603EC /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		4A931B0A17693E71001603EC /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -76,7 +76,7 @@
 				4A931B0017693BD5001603EC /* QuartzCore.framework in Frameworks */,
 				4A931ACA1769381A001603EC /* UIKit.framework in Frameworks */,
 				4A931ACC1769381A001603EC /* Foundation.framework in Frameworks */,
-				4A931B0917693E04001603EC /* opencv2.framework in Frameworks */,
+				4A8331571773B34C00C518A7 /* opencv2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,7 +105,7 @@
 		4A931AC81769381A001603EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4A931B0817693E04001603EC /* opencv2.framework */,
+				4A8331561773B34C00C518A7 /* opencv2.framework */,
 				4A931AFE17693BAD001603EC /* QuartzCore.framework */,
 				4A931AFC17693BA7001603EC /* CoreVideo.framework */,
 				4A931AFA17693BA0001603EC /* CoreMedia.framework */,
@@ -360,6 +360,7 @@
 				4A931AEE1769381A001603EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
